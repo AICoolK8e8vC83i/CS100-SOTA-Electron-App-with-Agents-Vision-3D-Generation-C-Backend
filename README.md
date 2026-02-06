@@ -2,7 +2,7 @@
 
 -User Interface
 Features:
--AI Agent via LangGraph/CrewAI/Autogen:
+-AI Agent API via LangGraph/CrewAI/Autogen:
 -Gmail
 -Google Maps for Directions
 -Google Calendar
