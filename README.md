@@ -1,9 +1,9 @@
--┌─────────────────────────────────────────────────────┐
--│                   DATA SOURCES (All Free)             │
--│  NASA FIRMS (wildfires) │ USGS (earthquakes)          │
--│  EPA AirNow (air quality) │ NWS (weather alerts)      │
--│  NOAA (climate) │ OpenAQ (global air sensors)          │
--└──────────────────────┬──────────────────────────────┘
+- ┌─────────────────────────────────────────────────────┐
+- │                   DATA SOURCES (All Free)             │
+- │  NASA FIRMS (wildfires) │ USGS (earthquakes)          │
+- │  EPA AirNow (air quality) │ NWS (weather alerts)      │
+- │  NOAA (climate) │ OpenAQ (global air sensors)          │
+- └──────────────────────┬──────────────────────────────┘
                        │
           ┌────────────▼─────────────┐
           │     APACHE AIRFLOW       │  ← Orchestration (DAGs)
