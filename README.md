@@ -1,1 +1,1 @@
--Object Detection for environment for renewable practices
+-Object Detection for environment for renewable practices and awarding points with an agent search, wrapped in an electron app with words demonstrating its pretty easy to find ways to support environmental and humanitarian causes
