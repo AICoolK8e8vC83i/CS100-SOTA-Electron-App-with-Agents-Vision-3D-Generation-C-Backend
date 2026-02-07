@@ -1,9 +1,55 @@
-# CS100-SOTA-Electron-App-with-Agents-Vision-3D-Generation-Python-Backend
-
--User Interface
-Features:
--AI Agent API via LangGraph/CrewAI/Autogen:
--Gmail
--Google Maps for Directions
--Google Calendar
--Find Ways to Help the Environment
+┌─────────────────────────────────────────────────────┐
+│                   DATA SOURCES (All Free)             │
+│  NASA FIRMS (wildfires) │ USGS (earthquakes)          │
+│  EPA AirNow (air quality) │ NWS (weather alerts)      │
+│  NOAA (climate) │ OpenAQ (global air sensors)          │
+└──────────────────────┬──────────────────────────────┘
+                       │
+          ┌────────────▼─────────────┐
+          │     APACHE AIRFLOW       │  ← Orchestration (DAGs)
+          │  Scheduled ingestion     │
+          │  Data quality checks     │
+          │  Pipeline monitoring     │
+          └────────────┬─────────────┘
+                       │
+          ┌────────────▼─────────────┐
+          │     APACHE KAFKA         │  ← Streaming Layer
+          │  Real-time event topics  │
+          │  (earthquakes, fires)    │
+          └─────┬──────────┬─────────┘
+                │          │
+    ┌───────────▼──┐  ┌───▼──────────────┐
+    │ APACHE SPARK │  │  FASTAPI + ML    │
+    │ (PySpark)    │  │  Anomaly Detection│
+    │ Batch ETL    │  │  (Isolation Forest│
+    │ Feature Eng  │  │   + Autoencoder) │
+    └──────┬───────┘  └───┬──────────────┘
+           │              │
+    ┌──────▼──────────────▼──────────┐
+    │    POSTGRESQL + POSTGIS        │  ← Geospatial Store
+    │    + ChromaDB (RAG Vector DB)  │  ← Semantic Search
+    │    dbt transformations         │  ← Data Modeling
+    └──────────────┬─────────────────┘
+                   │
+    ┌──────────────▼─────────────────┐
+    │     RAG AGENT (LangChain)      │
+    │  "What caused the 2024 LA      │
+    │   wildfires?" → semantic       │
+    │   retrieval over hazard docs   │
+    │  + CrewAI multi-agent analysis │
+    └──────────────┬─────────────────┘
+                   │
+    ┌──────────────▼─────────────────┐
+    │     MONITORING / OBSERVABILITY  │
+    │  Grafana dashboards            │
+    │  Pipeline health + data quality│
+    └──────────────┬─────────────────┘
+                   │
+    ┌──────────────▼─────────────────┐
+    │     ELECTRON APP (Frontend)    │
+    │  Deck.gl GlobeView + MapLibre  │
+    │  3D heatmaps, animated arcs    │
+    │  Real-time WebSocket updates   │
+    │  RAG chatbot sidebar           │
+    │  Alert notifications           │
+    └────────────────────────────────┘
